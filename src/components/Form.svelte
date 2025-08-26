@@ -155,7 +155,7 @@ function handleSundayNoChange() {
             </div>
         </section>
         {#if isPresent} 
-    <section class="participants-container">
+            <section class="participants-container">
         <div class="participants">
             <label for="adult">Adultes</label>
             <input type="tel"
@@ -172,14 +172,14 @@ function handleSundayNoChange() {
             bind:value={childNb}
             />
         </div>
-    </section>
-    <section class="saturday">
+            </section>
+            <section class="saturday">
         <p>
             A partir de quand ?
         </p>
         <div class="saturday-answer">
             <div class="answer">
-            <label for="saturday12">Le samedi midi</label>
+            <label for="saturday12">Samedi midi</label>
                 <input type="checkbox"
                 id="saturday12"
                 name="saturday12"
@@ -188,7 +188,7 @@ function handleSundayNoChange() {
             />
             </div>
             <div class="answer">
-                <label for="saturday19">Le samedi soir</label>
+                <label for="saturday19">Samedi soir</label>
                 <input type="checkbox"
                 id="saturday19"
                 name="saturday19"
@@ -198,8 +198,8 @@ function handleSundayNoChange() {
             </div>
         </div>
 
-    </section>
-    <section class="sunday">
+            </section>
+            <section class="sunday">
         <p>
             Et le dimanche ?
         </p>
@@ -224,8 +224,8 @@ function handleSundayNoChange() {
             </div>
         </div>
 
-    </section>    
-    <section class="accommodation">
+            </section>    
+            <section class="accommodation">
         <p>
             Hébergement en dortoir
         </p>
@@ -249,7 +249,7 @@ function handleSundayNoChange() {
             />
             </div>
         </div>
-    </section>
+            </section>
         {/if}
         <div class="message">
             <textarea
@@ -271,10 +271,10 @@ function handleSundayNoChange() {
 <style>
     main {
         width: 300px;
-        margin: 25px auto;
+        margin: 12px auto;
     }
     .form-header {
-        margin-top: 20px;
+        margin-top: 12px;
     }
     h2 {
         margin: 0;
@@ -283,7 +283,7 @@ function handleSundayNoChange() {
         font-style: italic;
     }
     form {
-        margin-top: 25px;
+        margin-top: 20px;
         border: 2px solid white;
         padding: 10px 0px;
     }
@@ -315,6 +315,11 @@ function handleSundayNoChange() {
     .presence {
         margin-top: 15px;
     }
+    .saturday p, .sunday p, .accommodation p {
+        background-color: #89762a;
+        margin: 0 40px;
+
+    }
     .saturday {
         margin-top: 20px;
     }
@@ -340,7 +345,7 @@ function handleSundayNoChange() {
         width: 100px;
     }
     .accommodation {
-        margin-top: 15px;
+        margin-top: 5px;
     }
     .accommodation-answer, .presence {
         display: flex;
@@ -355,7 +360,7 @@ function handleSundayNoChange() {
         margin: 0 10px;
     }
     .message{
-        margin-top: 10px;
+        margin-top: 7px;
         margin-bottom: 15px;
     }
     .form-validation {
