@@ -4,8 +4,8 @@ import toast, {Toaster} from 'svelte-french-toast'
 let lastname= '';
 let isPresent = false; // État de la case à cocher
 let isAbsent = false; // État de la case à cocher
-let adultNb= '';
-let childNb='';
+let adultNb= '0';
+let childNb='0';
 let saturday12= false;
 let saturday19= false;
 let sundayYes= false;
@@ -25,17 +25,21 @@ async function handleSubmit(event) {
       },
       body: JSON.stringify({
         lastname,
-        isPresent,
-        isAbsent,
+        isPresent: isPresent ? "oui" : "non",
+        isAbsent: isAbsent ? "oui" : "non",
         adultNb,
         childNb,
-        accommodation,
-        noAccommodation,
+        saturday12 : saturday12 ? "oui" : "non",
+        saturday19 : saturday19 ? "oui" : "non",
+        sundayYes : sundayYes ? "oui" : "non",
+        sundayNo : sundayNo ? "oui" : "non",
+        accommodation : accommodation ? "oui" : "non",
+        noAccommodation : noAccommodation ? "oui" : "non",
         message
       }),
     });
     if (response.ok) {
-        toast('Réponse envoyée. A bientôt.\n\nStéphanie et Vincent',
+        toast('Réponse envoyée. A bientôt.\n\nSteph et Vincent',
         {
             style: 'background-color: white; text-align: center; font-weight: 700; color: #ab9861',
             position: "top-center",
@@ -48,6 +52,10 @@ async function handleSubmit(event) {
         childNb = '';
         isPresent = false;
         isAbsent = false;
+        saturday12 = false;
+        saturday19 = false;
+        sundayYes = false;
+        sundayNo = false;        
         accommodation = false;
         noAccommodation = false;
         message = '';
@@ -227,7 +235,7 @@ function handleSundayNoChange() {
             </section>    
             <section class="accommodation">
         <p>
-            Hébergement en dortoir
+            Hébergement en dortoir ?
         </p>
         <div class="accommodation-answer">
             <div class="answer">
@@ -317,7 +325,7 @@ function handleSundayNoChange() {
     }
     .saturday p, .sunday p, .accommodation p {
         background-color: #89762a;
-        margin: 0 40px;
+        margin: 0 35px;
 
     }
     .saturday {
