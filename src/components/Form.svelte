@@ -143,23 +143,30 @@ function handleSundayNoChange() {
         </div>
         <section class="presence">
             <div class="answer">
-                <label for="present">Présent(es)</label>
-                <input type="checkbox"
-                id="present"
-                name="present"
-                bind:checked={isPresent}
-                on:change={handleIsPresentChange}
-
-                />
+                <label for="present" class="checkbox">
+                    Présent(es)
+                    <input type="checkbox"
+                    id="present"
+                    name="present"
+                    class="checkbox"
+                    bind:checked={isPresent}
+                    on:change={handleIsPresentChange}
+                    />
+                    <span class="checkmark"></span>
+                </label>
             </div>
-                <div class="answer">
-                <label for="absent">Absent(es)</label>
-                <input type="checkbox"
-                id="absent"
-                name="absent"
-                bind:checked={isAbsent}
-                on:change={handleIsAbsentChange}
-                />
+            <div class="answer">
+                <label for="absent" class="checkbox">
+                    Absent(es)
+                    <input type="checkbox"
+                    id="absent"
+                    name="absent"
+                    class="checkbox"
+                    bind:checked={isAbsent}
+                    on:change={handleIsAbsentChange}
+                    />
+                    <span class="checkmark"></span>
+                </label>
             </div>
         </section>
         {#if isPresent} 
@@ -187,48 +194,60 @@ function handleSundayNoChange() {
         </p>
         <div class="saturday-answer">
             <div class="answer">
-            <label for="saturday12">Samedi midi</label>
-                <input type="checkbox"
-                id="saturday12"
-                name="saturday12"
-                bind:checked={saturday12}
-                on:change={handleSaturday12Change}
-            />
+                <label for="saturday12" class="checkbox">
+                    Samedi midi
+                    <input type="checkbox"
+                    id="saturday12"
+                    name="saturday12"
+                    bind:checked={saturday12}
+                    on:change={handleSaturday12Change}
+                    />
+                    <span class="checkmark"></span>
+                </label>
             </div>
             <div class="answer">
-                <label for="saturday19">Samedi soir</label>
-                <input type="checkbox"
-                id="saturday19"
-                name="saturday19"
-                bind:checked={saturday19}
-                on:change={handleSaturday19Change}
-            />
+                <label for="saturday19" class="checkbox">Samedi soir
+                    <input type="checkbox"
+                    id="saturday19"
+                    name="saturday19"
+                    bind:checked={saturday19}
+                    on:change={handleSaturday19Change}
+                    />
+                    <span class="checkmark"></span>
+                </label>
             </div>
         </div>
 
             </section>
             <section class="sunday">
         <p>
-            Et le dimanche ?
+            Et le dimanche midi ?
         </p>
         <div class="sunday-answer">
             <div class="answer">
-            <label for="sundayYes">Oui</label>
+            <label for="sundayYes" class="checkbox">
+                Oui
                 <input type="checkbox"
                 id="sundayYes"
                 name="sundayYes"
                 bind:checked={sundayYes}
                 on:change={handleSundayYesChange}
-            />
+                />
+                <span class="checkmark"></span>
+
+            </label>
             </div>
             <div class="answer">
-                <label for="sundayNo">Non</label>
-                <input type="checkbox"
-                id="sundayNo"
-                name="sundayNo"
-                bind:checked={sundayNo}
-                on:change={handleSundayNoChange}
-            />
+                <label for="sundayNo" class="checkbox">
+                    Non
+                    <input type="checkbox"
+                    id="sundayNo"
+                    name="sundayNo"
+                    bind:checked={sundayNo}
+                    on:change={handleSundayNoChange}
+                    />
+                    <span class="checkmark"></span>
+                </label>
             </div>
         </div>
 
@@ -239,22 +258,28 @@ function handleSundayNoChange() {
         </p>
         <div class="accommodation-answer">
             <div class="answer">
-            <label for="accommodation">Oui</label>
+            <label for="accommodation" class="checkbox">
+                Oui
                 <input type="checkbox"
                 id="accommodation"
                 name="accommodation"
                 bind:checked={accommodation}
                 on:change={handleAccommodationChange}
-            />
+                />
+                <span class="checkmark"></span>
+            </label>
             </div>
             <div class="answer">
-                <label for="noAccommodation">Non</label>
-                <input type="checkbox"
-                id="noAccommodation"
-                name="noAccommodation"
-                bind:checked={noAccommodation}
-                on:change={handleNoAccommodationChange}
-            />
+                <label for="noAccommodation" class="checkbox">
+                    Non
+                    <input type="checkbox"
+                    id="noAccommodation"
+                    name="noAccommodation"
+                    bind:checked={noAccommodation}
+                    on:change={handleNoAccommodationChange}
+                    />
+                    <span class="checkmark"></span>
+                </label>
             </div>
         </div>
             </section>
@@ -286,29 +311,69 @@ function handleSundayNoChange() {
     }
     h2 {
         margin: 0;
-        background-color: white;
+        background-color: black;
         color: var(--gold);
         font-style: italic;
     }
     form {
         margin-top: 20px;
-        border: 2px solid white;
+        border: 2px solid black;
         padding: 10px 0px;
     }
     label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         font-weight: 700;
     }
     input, textarea {
-        border: transparent
+        border: transparent;
+        background-color: #c2b891;
     }
     input {
         height: 25px;
         text-align: center;
     }
+    /* Cache la case à cocher native */
+    .checkbox input{
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }    
+    /* Aspect de la case personnalisée */
+    .checkmark {
+        width: 15px;
+        height: 15px;
+        border: 2px solid #555;
+        border-radius: 4px; /* carré arrondi */
+        margin-right: 8px;
+        display: inline-block;
+        position: relative;
+        transition: background 0.2s, border 0.2s;
+        margin-left: 5px;
+    }
+    /* Effet quand la case est cochée */
+    .checkbox input:checked + .checkmark {
+        background: black;
+        border-color: black;
+    }
+    /* Ajout d’une "coche" */
+    .checkbox input:checked + .checkmark::after {
+        content: "";
+        position: absolute;
+        left: 3px;
+        top: -2px;
+        width: 6px;
+        height: 12px;
+        border: solid var(--gold);
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+    } 
     p {
         margin: 0;
         font-weight: 700;
-    }    
+    }
     textarea {
         padding: 10px;
     }    
@@ -324,9 +389,9 @@ function handleSundayNoChange() {
         margin-top: 15px;
     }
     .saturday p, .sunday p, .accommodation p {
-        background-color: #89762a;
+        background-color: black;
+        color: var(--gold);
         margin: 0 35px;
-
     }
     .saturday {
         margin-top: 20px;
@@ -339,7 +404,7 @@ function handleSundayNoChange() {
     .sunday {
         margin-top: 10px;
     }
-    .saturday label, .sunday label {
+    .saturday label, .sunday label, .accommodation label {
         font-weight: 400;
     }
     .participants-container {
@@ -383,5 +448,6 @@ function handleSundayNoChange() {
         width: 200px;
         font-weight: 700;
         color: var(--gold);
+        background-color: black;
     }
 </style>

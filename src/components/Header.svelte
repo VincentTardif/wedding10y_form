@@ -2,7 +2,7 @@
 
 </script>
 
-<img src="./images/10ans_coul.svg" alt="logo 10 ans de mariage">
+<img src="./images/logo.svg" alt="logo 10 ans de mariage">
 <h2>
     Steph et Vincent
 </h2>
@@ -16,7 +16,8 @@
         margin: 0;
     }
     img {
-        margin-top: 20px;
+        margin-top: 10px;
+        width: 300px;
     }
     h2 {
         /* margin-top: 20px; */
