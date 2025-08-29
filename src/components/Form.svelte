@@ -345,7 +345,7 @@ function handleSundayNoChange() {
     .checkmark {
         width: 15px;
         height: 15px;
-        border: 2px solid #555;
+        border: 2px solid black;
         border-radius: 4px; /* carré arrondi */
         margin-right: 8px;
         display: inline-block;
