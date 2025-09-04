@@ -12,7 +12,7 @@
 
 
 <style>
-    h1, h2 {
+    h2 {
         margin: 0;
     }
     img {

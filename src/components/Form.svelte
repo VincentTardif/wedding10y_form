@@ -24,59 +24,59 @@ async function handleSubmit(event) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        lastname,
-        isPresent: isPresent ? "oui" : "non",
-        isAbsent: isAbsent ? "oui" : "non",
-        adultNb,
-        childNb,
-        saturday12 : saturday12 ? "oui" : "non",
-        saturday19 : saturday19 ? "oui" : "non",
-        sundayYes : sundayYes ? "oui" : "non",
-        sundayNo : sundayNo ? "oui" : "non",
-        accommodation : accommodation ? "oui" : "non",
-        noAccommodation : noAccommodation ? "oui" : "non",
-        message
+        lastname: lastname || '',
+        isPresent: !!isPresent,
+        isAbsent: !!isAbsent,
+        adultNb: adultNb || '',
+        childNb: childNb || '',
+        saturday12: !!saturday12,
+        saturday19: !!saturday19,
+        sundayYes: !!sundayYes,
+        sundayNo: !!sundayNo,
+        accommodation: !!accommodation,
+        noAccommodation: !!noAccommodation,
+        message: message || ''
       }),
     });
-    if (response.ok) {
-        toast('Réponse envoyée. A bientôt.\n\nSteph et Vincent',
-        {
-            style: 'background-color: white; text-align: center; font-weight: 700; color: #ab9861',
-            position: "top-center",
-            duration: 10000,   // Durée en millisecondes (10 secondes)
-                }
-        )
-        // Réinitialiser les champs du formulaire
-        lastname = '';    
-        adultNb = '';
-        childNb = '';
-        isPresent = false;
-        isAbsent = false;
-        saturday12 = false;
-        saturday19 = false;
-        sundayYes = false;
-        sundayNo = false;        
-        accommodation = false;
-        noAccommodation = false;
-        message = '';
 
-        // Rediriger en haut de la page
-        window.scrollTo(0, 0);
+    if (response.ok) {
+      toast('Réponse envoyée. A bientôt.\n\nSteph et Vincent', {
+        style: 'background-color: white; text-align: center; font-weight: 700; color: #ab9861',
+        position: "top-center",
+        duration: 10000,
+      });
+
+      // Reset du formulaire
+      lastname = '';
+      adultNb = '';
+      childNb = '';
+      isPresent = false;
+      isAbsent = false;
+      saturday12 = false;
+      saturday19 = false;
+      sundayYes = false;
+      sundayNo = false;
+      accommodation = false;
+      noAccommodation = false;
+      message = '';
+
+      window.scrollTo(0, 0);
     } else {
-            console.error('Erreur lors de l\'envoi');
-            toast.error("Erreur !!! Contacte-nous directement. Merci.", {
-                position: "top-center",
-                duration: 10000,  // Durée en millisecondes (10 secondes)            
-            });
+      console.error('Erreur lors de l\'envoi');
+      toast.error("Erreur !!! Contacte-nous directement. Merci.", {
+        position: "top-center",
+        duration: 10000,
+      });
     }
   } catch (error) {
     console.error('Erreur API:', error);
-    toast.error("Une erreur est survenue", { // <-- Correction de la syntaxe de `toast.error`
+    toast.error("Une erreur est survenue", {
       position: "top-center",
       duration: 10000,
     });
   }
 }
+
 // Fonction pour gérer le changement d'état de la case à cocher Présent
 function handleIsPresentChange() {
   if (isPresent) {
