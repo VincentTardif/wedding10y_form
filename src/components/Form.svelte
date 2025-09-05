@@ -330,6 +330,7 @@ function handleSundayNoChange() {
     input, textarea {
         border: transparent;
         background-color: #c2b891;
+        color: black;
     }
     input {
         height: 25px;
