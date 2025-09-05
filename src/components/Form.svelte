@@ -73,7 +73,7 @@ async function handleSubmit(event) {
   <form on:submit={handleSubmit}>
     <div class="lastname">
       <label for="lastname">Nom</label>
-      <input type="text" id="lastname" bind:value={lastname} required />
+      <input  class="texte" type="text" id="lastname" bind:value={lastname} required />
     </div>
 
     <!-- Présence -->
@@ -93,11 +93,11 @@ async function handleSubmit(event) {
       <section class="participants-container">
         <div class="participants">
           <label for="adult">Adultes</label>
-          <input type="tel" id="adult" bind:value={adultNb}  required/>
+          <input  class="texte" type="tel" id="adult" bind:value={adultNb}  required/>
         </div>
         <div class="participants">
           <label for="child">Enfants</label>
-          <input type="tel" id="child" bind:value={childNb}  required/>
+          <input  class="texte" type="tel" id="child" bind:value={childNb}  required/>
         </div>
       </section>
 
@@ -149,7 +149,7 @@ async function handleSubmit(event) {
 
     <!-- Message -->
     <div class="message">
-      <textarea
+      <textarea class="texte"
         id="message"
         bind:value={message}
         rows="10"
@@ -166,152 +166,131 @@ async function handleSubmit(event) {
 </main>
 
 <style>
-    main {
-        width: 300px;
-        margin: 12px auto;
-    }
-    .form-header {
-        margin-top: 12px;
-    }
-    h2 {
-        margin: 0;
-        background-color: black;
-        color: var(--gold);
-        font-style: italic;
-    }
-    form {
-        margin-top: 20px;
-        border: 2px solid black;
-        padding: 10px 0px;
-    }
-    label {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-    }
-    input, textarea {
-        border: transparent;
-        background-color: #c2b891;
-    }
-    input {
-        height: 25px;
-        text-align: center;
-    }
-    /* Cache la case à cocher native */
-    .checkbox input{
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    }    
-    /* Aspect de la case personnalisée */
-    .checkmark {
-        width: 15px;
-        height: 15px;
-        border: 2px solid black;
-        border-radius: 4px; /* carré arrondi */
-        margin-right: 8px;
-        display: inline-block;
-        position: relative;
-        transition: background 0.2s, border 0.2s;
-        margin-left: 5px;
-    }
-    /* Effet quand la case est cochée */
-    .checkbox input:checked + .checkmark {
-        background: black;
-        border-color: black;
-    }
-    /* Ajout d’une "coche" */
-    .checkbox input:checked + .checkmark::after {
-        content: "";
-        position: absolute;
-        left: 3px;
-        top: -2px;
-        width: 6px;
-        height: 12px;
-        border: solid var(--gold);
-        border-width: 0 3px 3px 0;
-        transform: rotate(45deg);
-    } 
-    p {
-        margin: 0;
-        font-weight: 700;
-    }
-    textarea {
-        padding: 10px;
-    }    
-    .lastname, .participants {
-        display: flex;
-        flex-direction: column;
-    }
-    .lastname {
-        margin: 0 auto;
-        width: 246px;
-    }
-    .presence {
-        margin-top: 15px;
-    }
-    .saturday p, .sunday p, .accommodation p {
-        background-color: black;
-        color: var(--gold);
-        margin: 0 35px;
-    }
-    .saturday {
-        margin-top: 20px;
-    }
-    .saturday-answer, .sunday-answer  {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-    .sunday {
-        margin-top: 10px;
-    }
-    .saturday label, .sunday label, .accommodation label {
-        font-weight: 400;
-    }
-    .participants-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 10px;
-    }
-    .participants {
-        margin: 0 10px;
-        width: 100px;
-    }
-    .accommodation {
-        margin-top: 5px;
-    }
-    .accommodation-answer, .presence {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-    .answer {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        line-height: 1.75;
-        margin: 0 10px;
-    }
-    .message{
-        margin-top: 7px;
-        margin-bottom: 15px;
-    }
-    .form-validation {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 6px;
-    }
-    button {
-        width: 200px;
-        font-weight: 700;
-        color: var(--gold);
-        background-color: black;
-    }
+main {
+  width: 300px;
+  margin: 12px auto;
+}
+.form-header {
+  margin-top: 12px;
+}
+h2 {
+  margin: 0;
+  background-color: black;
+  color: var(--gold);
+  font-style: italic;
+}
+form {
+  margin-top: 20px;
+  border: 2px solid black;
+  padding: 10px 0px;
+}
+fieldset {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 12px;
+  border: none;
+  padding: 0;
+}
+fieldset label, .participants label {
+    font-weight: 700;
+}
+input, textarea {
+  border: transparent;
+  background-color: #c2b891;
+}
+input {
+  height: 25px;
+  text-align: center;
+}
+.texte {
+  color: black;
+}
+textarea {
+  padding: 10px;
+}
+.lastname, .participants {
+  display: flex;
+  flex-direction: column;
+}
+.lastname {
+  margin: 0 auto;
+  width: 246px;
+}
+.saturday p, .sunday p, .accommodation p {
+  background-color: black;
+  color: var(--gold);
+  margin: 0 35px;
+  text-align: center;
+  font-weight: 700;
+}
+.saturday, .sunday, .accommodation {
+  margin-top: 15px;
+}
+.saturday-answer, .sunday-answer, .accommodation-answer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  gap: 15px;
+}
+.participants-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.participants {
+  margin: 0 10px;
+  width: 100px;
+}
+.message {
+  margin: 10px 0 15px;
+}
+.form-validation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 6px;
+}
+button {
+  width: 200px;
+  font-weight: 700;
+  color: var(--gold);
+  background-color: black;
+}
+/* === Radios custom avec rond à droite === */
+label.radio {
+  position: relative;
+  padding-right: 25px; /* espace pour le cercle */
+  cursor: pointer;
+  /* font-weight: 700; */
+}
+label.radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+label.radio .custom-radio {
+  position: absolute;
+  right: 0;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+  border-radius: 50%;
+  transition: background 0.2s, border 0.2s;
+}
+label.radio input:checked + .custom-radio {
+  background: black;
+  border-color: black;
+}
+label.radio input:checked + .custom-radio::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
 </style>
