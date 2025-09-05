@@ -3,8 +3,8 @@ import toast, { Toaster } from 'svelte-french-toast'
 
 let lastname = '';
 let presence = ''; // "present" ou "absent"
-let adultNb = '0';
-let childNb = '0';
+let adultNb = '';
+let childNb = '';
 let saturday = ''; // "12" ou "19"
 let sunday = '';   // "yes" ou "no"
 let accommodation = ''; // "yes" ou "no"
@@ -41,8 +41,8 @@ async function handleSubmit(event) {
 
       lastname = '';
       presence = '';
-      adultNb = '0';
-      childNb = '0';
+      adultNb = '';
+      childNb = '';
       saturday = '';
       sunday = '';
       accommodation = '';
@@ -79,7 +79,7 @@ async function handleSubmit(event) {
     <!-- Présence -->
     <fieldset>
       <label class="radio">Présent(e.s)
-        <input type="radio" name="presence" value="present" bind:group={presence} />
+        <input type="radio" name="presence" value="present" bind:group={presence}  required />
         <span class="custom-radio"></span>
       </label>
       <label class="radio">Absent(e.s)
@@ -93,11 +93,11 @@ async function handleSubmit(event) {
       <section class="participants-container">
         <div class="participants">
           <label for="adult">Adultes</label>
-          <input type="tel" id="adult" bind:value={adultNb} />
+          <input type="tel" id="adult" bind:value={adultNb}  required/>
         </div>
         <div class="participants">
           <label for="child">Enfants</label>
-          <input type="tel" id="child" bind:value={childNb} />
+          <input type="tel" id="child" bind:value={childNb}  required/>
         </div>
       </section>
 
@@ -106,7 +106,7 @@ async function handleSubmit(event) {
         <p>A partir de quand ?</p>
         <div class="saturday-answer">
           <label class="radio">Samedi midi
-            <input type="radio" name="saturday" value="12" bind:group={saturday} />
+            <input type="radio" name="saturday" value="12" bind:group={saturday} required/>
             <span class="custom-radio"></span>
           </label>
           <label class="radio">Samedi soir
@@ -121,7 +121,7 @@ async function handleSubmit(event) {
         <p>Et le dimanche midi ?</p>
         <div class="sunday-answer">
           <label class="radio">Oui
-            <input type="radio" name="sunday" value="yes" bind:group={sunday} />
+            <input type="radio" name="sunday" value="yes" bind:group={sunday}  required/>
             <span class="custom-radio"></span>
           </label>
           <label class="radio">Non
@@ -136,7 +136,7 @@ async function handleSubmit(event) {
         <p>Hébergement en dortoir ?</p>
         <div class="accommodation-answer">
           <label class="radio">Oui
-            <input type="radio" name="accommodation" value="yes" bind:group={accommodation} />
+            <input type="radio" name="accommodation" value="yes" bind:group={accommodation}  required/>
             <span class="custom-radio"></span>
           </label>
           <label class="radio">Non
